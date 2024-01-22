@@ -87,6 +87,7 @@ const LoginScreen = () => {
               color="gray"
             />
             <TextInput
+              secureTextEntry={true}
               value={password}
               onChangeText={(text) => setPassword(text)}
               placeholderTextColor={"gray"}
@@ -140,7 +141,10 @@ const LoginScreen = () => {
           </Text>
         </Pressable>
 
-        <Pressable onPress={() => navigation.navigate("Register")} style={{ marginTop: 10 }}>
+        <Pressable
+          onPress={() => navigation.navigate("Register")}
+          style={{ marginTop: 10 }}
+        >
           <Text style={{ textAlign: "center", fontSize: 16 }}>
             Don't have an account? Sign up
           </Text>
