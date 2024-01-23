@@ -11,11 +11,11 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const jwt = require("jsonwebtoken");
+const jsonwebtoken = require("jsonwebtoken");
 
 mongoose
   .connect(
-    "mongodb+srv://christianjoshdeyto:megatron48@cluster0.nd3ldmx.mongodb.net/",
+    "mongodb+srv://christianjoshdeyto:sujan@cluster0.i7dlbxt.mongodb.net/",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -28,7 +28,7 @@ mongoose
     console.log("Error connecting to MongoDB");
   });
 
-app.listen(port, "192.168.1.6", () => {
+app.listen(port, () => {
   console.log("Server is running on port 3000");
 });
 
@@ -130,7 +130,7 @@ app.post("/login", async (req, res) => {
       return res.status(404).json({ message: "Invalid Password" });
     }
 
-    const token = jwt.sign({ userId: user._id }, secretKey);
+    const token = jsonwebtoken.sign({ userId: user._id }, secretKey);
 
     res.status(200).json({ token });
   } catch (error) {
