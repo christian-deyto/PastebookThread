@@ -11,10 +11,10 @@ import {
     Alert,
   } from "react-native";
 
-function ThreadsScreen() {
+function PostsScreen() {
   return (
-    <Text>ThreadsScreen</Text>
+    <Text>PostsScreen</Text>
   )
 }
 
-export default ThreadsScreen;
+export default PostsScreen;

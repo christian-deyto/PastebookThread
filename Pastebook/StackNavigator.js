@@ -6,7 +6,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import ActivityScreen from "./screens/ActivityScreen";
-import ThreadsScreen from "./screens/ThreadsScreen";
+import PostsScreen from "./screens/PostsScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
@@ -34,8 +34,8 @@ const StackNavigator = () => {
         />
 
         <Tab.Screen
-          name="Thread"
-          component={ThreadsScreen}
+          name="Post"
+          component={PostsScreen}
           options={{
             tabBarLabel: "Create",
             tabBarLabelStyle: { color: "black" },
