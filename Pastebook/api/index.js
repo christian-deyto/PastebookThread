@@ -11,25 +11,22 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const jsonwebtoken = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 mongoose
-  .connect(
-    "mongodb+srv://christianjoshdeyto:sujan@cluster0.i7dlbxt.mongodb.net/",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect("mongodb+srv://christianjoshdeyto:sujan@cluster0.i7dlbxt.mongodb.net/", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to MongoDB");
   })
   .catch((err) => {
-    console.log("Error connecting to MongoDB");
+    console.log("Error Connecting to MongoDB");
   });
 
 app.listen(port, () => {
-  console.log("Server is running on port 3000");
+  console.log("server is running on port 3000");
 });
 
 const User = require("./models/user");
@@ -45,13 +42,13 @@ app.post("/register", async (req, res) => {
       return res.status(400).json({ message: "Email already registered" });
     }
 
-    //new user
+    //create a new user
     const newUser = new User({ name, email, password });
 
     //generate and store the verification token
     newUser.verificationToken = crypto.randomBytes(20).toString("hex");
 
-    //save to database
+    //save the  user to the database
     await newUser.save();
 
     //send the verification email to the user
@@ -59,28 +56,28 @@ app.post("/register", async (req, res) => {
 
     res.status(200).json({ message: "Registration successful" });
   } catch (error) {
-    console.log("Error registering user", error);
-    res.status(500).json({ message: "Error registering user" });
+    console.log("error registering user", error);
+    res.status(500).json({ message: "error registering user" });
   }
 });
 
 const sendVerificationEmail = async (email, verificationToken) => {
-  //nodemailer transporter
+  //create a nodemailer transporter
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      email: "pastebook7@gmail.com",
-      pass: "exwd qeqg prxw cnqf",
+      user: "sujananand0@gmail.com",
+      pass: "",
     },
   });
 
-  //email message
+  //compose the email message
   const mailOptions = {
-    from: "pastebook.com",
+    from: "threads.com",
     to: email,
-    subject: "Welcome to Pastebook!",
-    text: `Please click the following link to verify your email http://localhost:3000/verify/${verificationToken}`,
+    subject: "Email Verification",
+    text: `please click the following link to verify your email http://localhost:3000/verify/${verificationToken}`,
   };
 
   try {
@@ -149,7 +146,7 @@ app.get("/user/:userId", (req, res) => {
       })
       .catch((error) => {
         console.log("Error: ", error);
-        res.status(500).json("error");
+        res.status(500).json("errror");
       });
   } catch (error) {
     res.status(500).json({ message: "error getting the users" });
