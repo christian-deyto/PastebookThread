@@ -1,27 +1,22 @@
-import React, { useEffect, useState, useContext } from "react";
 import {
-  Text,
   StyleSheet,
+  Text,
   View,
-  SafeAreaView,
-  Image,
-  KeyboardAvoidingView,
-  TextInput,
-  Pressable,
-  Alert,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+import React, { useState, useEffect, useContext } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { UserType } from "../UserContext";
+import User from "../components/User";
 
 const ActivityScreen = () => {
   const [selectedButton, setSelectedButton] = useState("people");
   const [content, setContent] = useState("People Content");
   const [users, setUsers] = useState([]);
-  const [userId, setUserId] = useContext(UserType);
+  const { userId, setUserId } = useContext(UserType);
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
   };
@@ -33,7 +28,7 @@ const ActivityScreen = () => {
       setUserId(userId);
 
       axios
-        .get(`http://172.26.22.190:3000/users/${userId}`)
+        .get(`http://172.26.22.190:3000/user/${userId}`)
         .then((response) => {
           setUsers(response.data);
         })
@@ -70,7 +65,7 @@ const ActivityScreen = () => {
                 borderRadius: 6,
                 borderWidth: 0.7,
               },
-              selectedButton === "people" ? { backgroundColor: "black" } : null,
+              selectedButton === "people" ? { backgroundColor: "#F875AA" } : null,
             ]}
           >
             <Text
@@ -97,7 +92,7 @@ const ActivityScreen = () => {
                 borderRadius: 6,
                 borderWidth: 0.7,
               },
-              selectedButton === "all" ? { backgroundColor: "black" } : null,
+              selectedButton === "all" ? { backgroundColor: "#F875AA" } : null,
             ]}
           >
             <Text
@@ -125,7 +120,7 @@ const ActivityScreen = () => {
                 borderWidth: 0.7,
               },
               selectedButton === "requests"
-                ? { backgroundColor: "black" }
+                ? { backgroundColor: "#F875AA" }
                 : null,
             ]}
           >
@@ -141,9 +136,21 @@ const ActivityScreen = () => {
             </Text>
           </TouchableOpacity>
         </View>
+
+        <View>
+          {selectedButton === "people" && (
+            <View style={{marginTop:20}}>
+              {users?.map((item, index) => (
+                <User key={index} item={item} />
+              ))}
+            </View>
+          )}
+        </View>
       </View>
     </ScrollView>
   );
 };
 
 export default ActivityScreen;
+
+const styles = StyleSheet.create({});

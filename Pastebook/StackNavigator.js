@@ -5,11 +5,13 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
-import ActivityScreen from "./screens/ActivityScreen";
-import PostsScreen from "./screens/PostsScreen";
-import ProfileScreen from "./screens/ProfileScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import PostsScreen from "./screens/PostsScreen";
+import { Ionicons } from "@expo/vector-icons";
+import ActivityScreen from "./screens/ActivityScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -26,9 +28,9 @@ const StackNavigator = () => {
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Entypo name="home" size={24} color="black" />
+                <Entypo name="home" size={24} color="#F875AA" />
               ) : (
-                <AntDesign name="home" size={24} color="black" />
+                <AntDesign name="home" size={24} color="#F875AA" />
               ),
           }}
         />
@@ -42,9 +44,9 @@ const StackNavigator = () => {
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Ionicons name="create" size={24} color="black" />
+                <Ionicons name="create" size={24} color="#F875AA" />
               ) : (
-                <Ionicons name="create-outline" size={24} color="black" />
+                <Ionicons name="create-outline" size={24} color="#F875AA" />
               ),
           }}
         />
@@ -58,9 +60,9 @@ const StackNavigator = () => {
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <AntDesign name="heart" size={24} color="black" />
+                <AntDesign name="heart" size={24} color="#F875AA" />
               ) : (
-                <AntDesign name="hearto" size={24} color="black" />
+                <AntDesign name="hearto" size={24} color="#F875AA" />
               ),
           }}
         />
@@ -74,9 +76,9 @@ const StackNavigator = () => {
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Ionicons name="person" size={24} color="black" />
+                <Ionicons name="person" size={24} color="#F875AA" />
               ) : (
-                <Ionicons name="person-outline" size={24} color="black" />
+                <Ionicons name="person-outline" size={24} color="#F875AA" />
               ),
           }}
         />

@@ -54,7 +54,7 @@ const RegisterScreen = () => {
       <View style={{ marginTop: 50 }}>
         <Image
           style={{ width: 150, height: 100, resizeMode: "contain" }}
-          source={require("../assets/images/logo-withoutbginverted.png")}
+          source={require("../assets/images/logo-withoutbgpink.png")}
         />
       </View>
 
@@ -171,7 +171,7 @@ const RegisterScreen = () => {
           onPress={handleRegister}
           style={{
             width: 200,
-            backgroundColor: "black",
+            backgroundColor: "#F875AA",
             padding: 15,
             marginTop: 40,
             marginLeft: "auto",

@@ -10,3 +10,5 @@ const User = () => {
 }
 
 export default User
+
+const styles = StyleSheet.create({})
